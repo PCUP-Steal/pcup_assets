@@ -1,0 +1,108 @@
+<script type="text/javascript">
+	
+	function lolking() {
+	//Variables	
+	var tierPlayer = document.getElementById("tier").value
+	var divisionPlayer = document.getElementById("division").value
+	var pointsPlayer = document.getElementById("points").value
+
+
+	console.log("Points inputed: "+pointsPlayer);
+
+	//Operations
+
+		//Start of Converting Tier Strings into Ints
+		if(tierPlayer == "bronze"){
+			tierInt = tierPlayer;
+			tierInt = 1;
+		} 
+		else if (tierPlayer == "silver"){
+			tierInt = tierPlayer;
+			tierInt = 2;
+		}
+		else if (tierPlayer == "gold"){
+			tierInt = tierPlayer;
+			tierInt = 3;
+		}
+		else if (tierPlayer == "platinum" || tierPlayer == "plat"){
+			tierInt = tierPlayer;
+			tierInt = 4;
+		}
+		else if (tierPlayer == "diamond" || tierPlayer == "dia"){
+			tierInt = tierPlayer;
+			tierInt = 5;
+		}
+		else if(tierPlayer == ""){
+			document.getElementById("lks").value = "Tier Error";
+		}
+		else {
+			document.getElementById("lks").value = "Tier Error";
+		}
+		//End of Converting Tier Strings into Ints
+
+		console.log("Tier Player Value: "+tierInt);
+
+		//Start of Converting Odd numbers into Even numbers
+		if (pointsPlayer < 0 || pointsPlayer > 100) {
+			document.getElementById("lks").value = "Points Error";
+		}
+		else if (pointsPlayer%2 == 1) {
+			pointsInt = pointsPlayer;
+			pointsInt++;
+		}
+		else {
+			pointsInt = pointsPlayer;
+		}
+		//End of Converting Odd numbers into Even numbers
+
+		if(divisionPlayer < 1 || divisionPlayer > 5){
+			document.getElementById("lks").value = "Division Error";		
+		}
+		else {
+
+		console.log("Points value in lks: "+pointsInt);
+
+		var divisionValue = (-70*divisionPlayer)+350
+		var tierValue = (350*tierInt)-350 
+		var pointsValue = (pointsInt)/2
+		var lks = 800+tierValue+divisionValue+pointsValue
+
+		document.getElementById("lks").value = lks;
+
+		console.log("Division Value: "+divisionValue);
+		console.log("Tier Value: "+tierValue);
+		console.log("Points Value: "+pointsValue);
+
+		console.log(lks);
+
+		}
+
+}
+
+<html>
+
+<div id="input">
+
+<form>
+  <label for="tier" class="form-field-name" title="Your current tier (Bronze, Silver, etc)"> Tier (ex: Bronze, Plat, Diamond)</label><br>
+  <input type="text" id="tier" class="form-field" onkeydown="if (event.keyCode == 13) lolking()">
+  <br>
+  <label for="division" class="form-field-name" title="Your current division (1,2,3,4,5)"> Division (1, 2, 3, 4, 5)</label><br>
+  <input type="text" id="division" class="form-field" onkeydown="if (event.keyCode == 13) lolking()">
+  <br>
+  <label for="points" class="form-field-name" title="Your Points ([0,100])"> Points (LP)</label><br>
+  <input type="text" id="points" class="form-field" onkeydown="if (event.keyCode == 13) lolking()">
+  <br>
+  <br>
+  <input type="button" value="Calculate LKS" onclick="lolking()">
+  <input type="reset" id="clear" value="Clear" class="rscore-button">
+  <br>
+  <div id="resultat">
+  <h1>Your LKS</h1>
+  </div>
+  <input type="text" id="lks" class="coteR_reponse" style="color: black;">
+</form>
+
+</div>
+
+</html>
